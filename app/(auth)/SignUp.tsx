@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { AuthInputForm } from "../../components/Form/AuthInputForm";
-import { Button } from "../../components/Form/Button";
 import { useAuth } from "../../hooks/Auth";
 import { SignUpFormData } from "../../types/AuthFormData";
 
@@ -129,9 +128,8 @@ const Screen = () => {
                             />
 
                             <TouchableOpacity
-                                className='h-16 bg-secondary rounded-md mb-4 flex-row items-center px-5 mt-5'
+                                className={`h-16 rounded-md mb-4 flex-row items-center px-5 mt-5 ${isValid ? 'bg-secondary' : 'bg-secondary/60'}`}
                                 activeOpacity={0.7}
-                                disabled={!isValid}
                                 onPress={handleSubmit(handleSignUp)}
                             >
                                 <Text className='flex-1 text-center font-semibold text-xl text-shape'>Cadastrar</Text>

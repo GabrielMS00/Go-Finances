@@ -93,9 +93,8 @@ const Screen = () => {
                             />
 
                             <TouchableOpacity
-                                className='h-16 bg-secondary rounded-md mb-4 flex-row items-center px-5 mt-5'
+                                className={`h-16 rounded-md mb-4 flex-row items-center px-5 mt-5 ${isValid ? 'bg-secondary' : 'bg-secondary/60'}`}
                                 activeOpacity={0.7}
-                                disabled={!isValid}
                                 onPress={handleSubmit(handleSignIn)}
                             >
                                 <Text className='flex-1 text-center font-semibold text-xl text-shape'>Entrar</Text>
