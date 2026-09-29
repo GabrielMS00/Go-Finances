@@ -1,23 +1,23 @@
+import { ReactNode } from 'react';
 import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
-import { SvgProps } from 'react-native-svg';
 
 type Props = TouchableOpacityProps & {
     title: string;
-    svg: React.FC<SvgProps>;
+    icon: ReactNode;
 }
 
-export const SiginSocialButton = ({ title, svg: Svg, ...rest }: Props) => {
+export const SiginSocialButton = ({ title, icon, ...rest }: Props) => {
     return (
         <TouchableOpacity
-            className='h-20 bg-shape rounded-md mb-4 items-center flex-row'
-            activeOpacity={0.8}
+            className='h-16 bg-shape rounded-md mb-4 flex-row items-center px-5'
+            activeOpacity={0.7}
             {...rest}
         >
-            <View className='h-full justify-center items-center p-4 border-r border-gray-300'>
-                <Svg />
+            <View className='w-8 items-center'>
+                {icon}
             </View>
 
-            <Text className='flex-1 text-center font-semibold text-lg'>{title}</Text>
+            <Text className='flex-1 text-center font-semibold text-base text-title'>{title}</Text>
         </TouchableOpacity>
     );
 }
