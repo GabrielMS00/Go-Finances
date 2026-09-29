@@ -1,15 +1,14 @@
 import { Text, TextInputProps, View } from "react-native";
 import { Input } from './Input';
-import { Control, Controller } from "react-hook-form";
-import { FormData } from "../../types/FormData";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-type Props = TextInputProps & {
-    control: Control<FormData>;
-    name: 'name' | 'amount';
-    error: string;
+type Props<T extends FieldValues> = TextInputProps & {
+    control: Control<T>;
+    name: Path<T>;
+    error?: string;
 }
 
-export const InputForm = ({ control, name, error, ...rest }: Props) => {
+export function InputForm<T extends FieldValues>({ control, name, error, ...rest }: Props<T>) {
     return (
         <View className="w-full">
             <Controller

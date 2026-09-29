@@ -1,11 +1,12 @@
 import { router } from "expo-router";
-import { Alert, Text, View, Platform } from "react-native";
+import { Alert, Text, View, Platform, TouchableOpacity, ScrollView } from "react-native";
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useAuth } from "../../hooks/Auth";
 import { SiginSocialButton } from "../../components/SiginSocialButton";
+import { Button } from "../../components/Form/Button";
 import { useEffect } from "react";
 
 const Screen = () => {
@@ -52,13 +53,30 @@ const Screen = () => {
                 </View>
 
                 <View className="w-full h-1/4 bg-secondary">
-                    <View className="-mt-10 px-9 justify-between">
+                    <ScrollView
+                        className="-mt-10"
+                        contentContainerClassName="px-9 pb-6"
+                        showsVerticalScrollIndicator={false}
+                    >
                         <SiginSocialButton title="Entrar com Google" svg={GoogleSvg} />
                         {
                             Platform.OS === 'ios' &&
                             <SiginSocialButton title="Entrar com Apple" svg={AppleSvg} onPress={handleSignInWithApple} />
                         }
-                    </View>
+
+                        <Button
+                            title="Entrar com e-mail"
+                            activeOpacity={0.7}
+                            onPress={() => router.push('/SignIn')}
+                        />
+
+                        <TouchableOpacity
+                            className="items-center mt-4"
+                            onPress={() => router.push('/SignUp')}
+                        >
+                            <Text className="font-medium">Criar conta</Text>
+                        </TouchableOpacity>
+                    </ScrollView>
                 </View>
             </View>
         </GestureHandlerRootView>
