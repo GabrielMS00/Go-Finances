@@ -6,16 +6,10 @@ import { BorderlessButton, GestureHandlerRootView } from 'react-native-gesture-h
 import { useState } from "react";
 import { HighLightValue } from "../../types/HighLightValue";
 import { useAuth } from "../../hooks/Auth";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Screen = () => {
 
     const { logOut, user } = useAuth();
-
-    // Função para limpar todas as transações de uma conta.
-    const removeAll = () => {
-        AsyncStorage.removeItem(`@go-finances:transactions_user:${user?.id}`);
-    }
 
     const initialHighlightValue = {
         entrie: '0',

@@ -1,4 +1,4 @@
-import { Text, View, FlatList } from "react-native";
+import { Alert, Text, View, FlatList, TouchableOpacity } from "react-native";
 import { TransactionCard } from "./TransactionCard";
 import { useEffect, useState } from "react";
 import { Transaction } from "../types/Transaction";
@@ -86,13 +86,40 @@ export const TransactionsList = ({ setHighLightValues }: Props) => {
 
     }
 
+    const handleClearAll = () => {
+        Alert.alert(
+            'Limpar dados',
+            'Esta ação vai apagar todas as suas transações e não pode ser desfeita. Deseja continuar?',
+            [
+                { text: 'Cancelar', style: 'cancel' },
+                {
+                    text: 'Limpar',
+                    style: 'destructive',
+                    onPress: async () => {
+                        const dataKey = `@go-finances:transactions_user:${user?.id}`;
+                        await AsyncStorage.removeItem(dataKey);
+                        loadTransaction();
+                    }
+                },
+            ]
+        );
+    }
+
     useEffect(() => {
         loadTransaction();
     }, [data])
 
     return (
         <View className="flex-1 px-6 mt-24">
-            <Text className="text-xl mb-7">Listagem</Text>
+            <View className="flex-row items-center justify-between mb-7">
+                <Text className="text-xl">Listagem</Text>
+
+                {data.length > 0 &&
+                    <TouchableOpacity onPress={handleClearAll}>
+                        <Text className="text-attention font-semibold">Limpar</Text>
+                    </TouchableOpacity>
+                }
+            </View>
 
             <FlatList
                 data={data}
