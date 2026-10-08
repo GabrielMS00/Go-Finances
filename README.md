@@ -78,3 +78,17 @@ Isso abre o Metro Bundler no terminal, exibindo um QR code. Para testar no dispo
 3. Abra o Expo Go e escaneie o QR code exibido no terminal (no iOS, o QR code pode ser escaneado diretamente pela câmera nativa).
 
 O projeto também pode ser executado diretamente em um emulador Android ou simulador iOS, com os comandos `npm run android` ou `npm run ios`, desde que o ambiente nativo correspondente esteja configurado na máquina.
+
+## Estrutura do projeto
+
+```
+app/                  Telas e rotas, organizadas pelo Expo Router
+  (auth)/              Telas de autenticação: tela inicial, login e cadastro
+  (tabs)/               Telas principais do aplicativo: Dashboard, Registrar e Resumo
+components/            Componentes de interface reutilizáveis
+hooks/                 Hooks customizados, incluindo o contexto de autenticação
+lib/                   Configuração de bibliotecas externas, como o cliente do Supabase
+types/                 Definições de tipos TypeScript compartilhadas
+data/                  Dados estáticos, como a lista de categorias de transações
+assets/                Ícones, imagens e arquivos SVG
+```
