@@ -92,3 +92,16 @@ types/                 Definições de tipos TypeScript compartilhadas
 data/                  Dados estáticos, como a lista de categorias de transações
 assets/                Ícones, imagens e arquivos SVG
 ```
+
+## Limitações conhecidas
+
+O login por conta Google e por conta Apple depende de módulos nativos que não estão disponíveis no aplicativo Expo Go. Para que esses métodos de login funcionem, é necessário gerar uma versão de desenvolvimento nativa do aplicativo (development build), por meio do EAS Build ou de um ambiente de build local. Até que essa versão seja gerada, o cadastro e o login por e-mail e senha são a forma recomendada de testar o aplicativo pelo Expo Go.
+
+## Scripts disponíveis
+
+| Comando | Descrição |
+| --- | --- |
+| `npm run start` | Inicia o servidor de desenvolvimento do Expo |
+| `npm run android` | Inicia o aplicativo em um emulador ou dispositivo Android |
+| `npm run ios` | Inicia o aplicativo em um simulador ou dispositivo iOS |
+| `npm run web` | Inicia o aplicativo no navegador |
